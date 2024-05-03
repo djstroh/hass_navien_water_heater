@@ -31,11 +31,11 @@ class NavienOnDemandSwitchEntity(SwitchEntity):
 
     async def async_added_to_hass(self) -> None:
         """Run when this Entity has been added to HA."""
-        self.channel.register_callback(self.async_write_ha_state)
+        self.channel.register_callback(self.schedule_update_ha_state)
 
     async def async_will_remove_from_hass(self) -> None:
         """Entity being removed from hass."""
-        self.channel.deregister_callback(self.async_write_ha_state)
+        self.channel.deregister_callback(self.schedule_update_ha_state)
 
     @property
     def available(self):
@@ -84,11 +84,11 @@ class NavienPowerSwitchEntity(SwitchEntity):
 
     async def async_added_to_hass(self) -> None:
         """Run when this Entity has been added to HA."""
-        self.channel.register_callback(self.async_write_ha_state)
+        self.channel.register_callback(self.schedule_update_ha_state)
 
     async def async_will_remove_from_hass(self) -> None:
         """Entity being removed from hass."""
-        self.channel.deregister_callback(self.async_write_ha_state)
+        self.channel.deregister_callback(self.schedule_update_ha_state)
 
     @property
     def available(self):
